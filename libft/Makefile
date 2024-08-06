@@ -36,6 +36,7 @@ files 	   = ft_strlen \
 			 ft_putnbr_fd\
 			 get_next_line\
 			 get_next_line_utils\
+			 ft_free_matriz\
 
 Compiler	= gcc
 

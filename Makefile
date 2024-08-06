@@ -6,24 +6,25 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/06 17:31:38 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/06 17:41:33 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = so_long.c
+SRCS = srcs/so_long.c
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
-CC = CC
+CC = cc
 CFALGS = -Wall -Wextra -Wall
-MLX = 
+MLX = -I./minilibx-linux -L./minilibx-linux -lmlx -L/usr/include/../lib -lXext -lX11 -lm
+RM = rm -f
 LIBFT = libft
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		make -s -C $(LIBFT)
-		$(CC) $(CFALGS) -o $(NAME) $(LIBFT)/libft.a
+		$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a
 clean:
 	make clean -s -C $(LIBFT)
 	$(RM) $(OBJS)

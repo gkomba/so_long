@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   free_matriz.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 17:42:54 by gkomba           ###   ########.fr       */
+/*   Created: 2024/08/06 18:03:37 by gkomba            #+#    #+#             */
+/*   Updated: 2024/08/06 18:03:53 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "../minilibx-linux/mlx.h"
-# include <stdio.h>
-# include <math.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
+void	ft_free_matriz(char **arr)
+{
+	int	i;
 
-#endif
+	i = -1;
+	while (arr[++i])
+		free(arr[i]);
+	free(arr);
+}

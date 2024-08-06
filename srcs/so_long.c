@@ -6,33 +6,56 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:13:22 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 17:23:09 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/06 18:22:40 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
-char    **ft_get_map(char **map_addres)
+char	**ft_get_map(char *map_addres)
 {
-    int fd;
-    char *get_map_string;
-    char **get_map_matriz;
-    int buffer_readed;
+	int		fd;
+	int		i;
+	char	*get_map_string;
+	char	**get_map_matriz;
 
-    fd = open(map_addres, O_RDONLY);
-    get_map_string = (char *)malloc(sizeof(char) * 100);
-    buffer_readed = read(fd, get_map_string, 100);
-    get_map_matriz = ft_split(get_map_string, '\n');
-    return (get_map_matriz);
+	fd = open(map_addres, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Erro ao abrir o arquivo");
+		return (NULL);
+	}
+	get_map_string = (char *)malloc(sizeof(char) * 1000000);
+	if (!get_map_string)
+	{
+		perror("Erro ao alocar memória");
+		close(fd);
+		return (NULL);
+	}
+	i = 0;
+	while (read(fd, &get_map_string[i], 1) > 0)
+		i++;
+	get_map_string[i] = '\0';
+	close(fd);
+	get_map_matriz = ft_split(get_map_string, '\n');
+	if (!get_map_matriz)
+	{
+		perror("Erro ao dividir o mapa");
+		free(get_map_string);
+		return (NULL);
+	}
+	free(get_map_string);
+	return (get_map_matriz);
 }
 
 int	main(int argc, char **argv)
 {
-    int i;
-    char **map;
-    map = ft_get_map(argv[1]);
-    i = -1;
-    while (map[++i])
-        printf("%s\n", map[i]);
+	int i;
+	char **map;
+	map = ft_get_map(argv[1]);
+	i = -1;
+	while (map[++i])
+		printf("%s\n", map[i]);
+	ft_free_matriz(map);
 	exit(EXIT_SUCCESS);
 }
