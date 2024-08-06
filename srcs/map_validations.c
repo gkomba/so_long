@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map_validations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 19:00:08 by gkomba           ###   ########.fr       */
+/*   Created: 2024/08/06 18:38:14 by gkomba            #+#    #+#             */
+/*   Updated: 2024/08/06 19:18:53 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/so_long.h"
 
-# include "../minilibx-linux/mlx.h"
-# include <stdio.h>
-# include <math.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
-
-void ft_handle_extension(char *map);
-
-#endif
+void ft_handle_extension(char *map)
+{
+    if (!(ft_strnstr(map, ".ber", ft_strlen(map))))
+    {
+        ft_putendl_fd("Error", 2);
+        perror("Invalid Extension");
+        exit (EXIT_FAILURE);
+    }
+    return ;
+}

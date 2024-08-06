@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:13:22 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 18:22:40 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/06 18:58:35 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 {
 	int i;
 	char **map;
+    ft_handle_extension(argv[1]);
 	map = ft_get_map(argv[1]);
 	i = -1;
 	while (map[++i])

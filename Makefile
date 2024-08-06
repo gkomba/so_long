@@ -6,12 +6,14 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/06 17:41:33 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/06 18:53:19 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = srcs/so_long.c
+SRCS = srcs/so_long.c\
+		srcs/map_validations.c
+
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
 CC = cc
