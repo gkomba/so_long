@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 19:00:08 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/06 19:39:48 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-void ft_handle_extension(char *map);
+void ft_handle_map_extension(char *map);
 
 #endif

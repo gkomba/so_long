@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:13:22 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/06 18:58:35 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/06 19:40:00 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	**ft_get_map(char *map_addres)
 	if (fd == -1)
 	{
 		perror("Erro ao abrir o arquivo");
-		return (NULL);
+        exit (EXIT_FAILURE);
 	}
 	get_map_string = (char *)malloc(sizeof(char) * 1000000);
 	if (!get_map_string)
 	{
 		perror("Erro ao alocar memória");
 		close(fd);
-		return (NULL);
+		exit (EXIT_FAILURE);
 	}
 	i = 0;
 	while (read(fd, &get_map_string[i], 1) > 0)
@@ -42,7 +42,7 @@ char	**ft_get_map(char *map_addres)
 	{
 		perror("Erro ao dividir o mapa");
 		free(get_map_string);
-		return (NULL);
+        exit (EXIT_FAILURE);
 	}
 	free(get_map_string);
 	return (get_map_matriz);
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 {
 	int i;
 	char **map;
-    ft_handle_extension(argv[1]);
+    ft_handle_map_extension(argv[1]);
 	map = ft_get_map(argv[1]);
 	i = -1;
 	while (map[++i])
