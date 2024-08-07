@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 18:38:14 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 09:40:53 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/07 14:23:13 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,20 @@ void	ft_handle_map_components(char **map)
 	}
 }
 
-void	ft_handle_map_wals(char **map)
+void	ft_handle_map_walls(char **map)
 {
-	int i;
-	int end;
-	int start;
-    
-    i = -1;
-    while (map[++i])
-    {
-        start = 0;
-        end = ft_strlen(map[i]);
-        if ((map[i][start] != '1') || map[i][end - 1] != '1')
-        {
-            ft_free_matriz(map);
-            ft_putendl_fd("Error", 2);
-            ft_putendl_fd("Error: Invalid Map Wals", 2);
-            exit(EXIT_FAILURE);
-        }
-    }
+	int	i;
+
+	ft_map_is_surrounded_by_walls(map);
+	i = -1;
+	while (map[++i])
+	{
+		if ((map[i][0] != '1') || map[i][ft_strlen(map[i]) - 1] != '1')
+		{
+			ft_free_matriz(map);
+			ft_putendl_fd("Error", 2);
+			ft_putendl_fd("Error: Invalid Map Walls", 2);
+			exit(EXIT_FAILURE);
+		}
+	}
 }
