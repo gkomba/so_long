@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:19:11 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 16:15:13 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/07 18:53:25 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,19 @@ int	ft_count_chr_occurrency_on_map(char **map, char chr)
 		}
 	}
 	return (chr_occurrency);
+}
+
+char	**ft_clone_map(char **map)
+{
+	int		len;
+	int		i;
+	char	**matriz;
+
+	len = ft_matriz_len(map);
+	matriz = (char **)malloc(sizeof(char *) * (len + 1));
+	i = -1;
+	while (++i < len)
+		matriz[i] = ft_strdup(map[i]);
+	matriz[i] = 0;
+	return (matriz);
 }

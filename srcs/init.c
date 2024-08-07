@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 16:12:30 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/07 19:11:17 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	ft_init_map(char *map_name)
 	ft_handle_map_components_player(map);
 	ft_handle_map_components_collectible(map);
 	ft_handle_map_components_exit(map);
+    //ft_handle_map_path(map, 'C', 'E');
+    ft_handle_map_path(map, 'E', 'G');
 	i = -1;
 	while (map[++i])
 		printf("%s\n", map[i]);
