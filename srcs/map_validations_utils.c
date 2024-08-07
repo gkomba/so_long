@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map_validations_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 09:35:07 by gkomba           ###   ########.fr       */
+/*   Created: 2024/08/07 09:19:11 by gkomba            #+#    #+#             */
+/*   Updated: 2024/08/07 09:19:46 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/so_long.h"
 
-# include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include <math.h>
-# include <stdio.h>
-# include <stdlib.h>
+int	ft_has_only_this_chars_on_string(char *str, char *map_components)
+{
+	int	i;
 
-void	ft_handle_map_extension(char *map);
-void	ft_hande_map_form(char **map);
-void	ft_handle_map_components(char **map);
-void	ft_handle_map_wals(char **map);
-int		ft_has_only_this_chars_on_string(char *str, char *map_components);
-#endif
+	i = -1;
+	while (str[++i])
+	{
+		if (!(ft_strchr(map_components, str[i])))
+			return (0);
+	}
+	return (1);
+}
