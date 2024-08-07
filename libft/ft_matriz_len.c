@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_matriz_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:13:22 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 15:57:24 by gkomba           ###   ########.fr       */
+/*   Created: 2024/08/07 16:15:16 by gkomba            #+#    #+#             */
+/*   Updated: 2024/08/07 16:16:30 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_matriz_len(char **matriz)
 {
-	if (argc < 2)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Error: No Map Address", 2);
-		exit(EXIT_FAILURE);
-	}
-	else if (argc == 2)
-	{
-		ft_init_map(argv[1]);
-		//ft_init_game();
-	}
-	else
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Error: Too Many Arguments", 2);
-		exit(EXIT_FAILURE);
-	}
-	exit(EXIT_SUCCESS);
+	int	i;
+
+	i = 0;
+	while (matriz[i])
+		i++;
+	return (i);
 }

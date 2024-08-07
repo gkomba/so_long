@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:19:11 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 14:23:24 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/07 16:15:13 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,6 @@ int	ft_has_only_this_char_on_sring(char *str, char chr)
 		if (str[i] != '1')
 			return (0);
 	return (1);
-}
-
-int	ft_matriz_len(char **matriz)
-{
-	int	i;
-
-	i = 0;
-	while (matriz[i])
-		i++;
-	return (i);
 }
 
 void	ft_map_is_surrounded_by_walls(char **map)
