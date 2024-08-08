@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:13:22 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 15:57:24 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/08 11:34:28 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		ft_init_map(argv[1]);
-		//ft_init_game();
+		ft_init_game(argv[1]);
 	}
 	else
 	{

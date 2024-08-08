@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 09:22:45 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/08 11:34:44 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+# define OBJECT_SIZE 30
 
 typedef struct s_map
 {
@@ -26,9 +27,18 @@ typedef struct s_map
 	int		finded;
 	int		i_lines;
 	int		i_coluns;
-	int		count_colletibles;
+	int		wdth;
+	int		hgth;
 }			t_map;
 
+typedef struct s_win
+{
+	void	*img;
+	void	*init;
+	void	*new_win;
+}			t_win;
+
+void		ft_init_game(char *map_name);
 void		ft_init_map(char *map_name);
 char		**ft_get_map(char *map_addres);
 char		**ft_build_map(char *get_map_string);

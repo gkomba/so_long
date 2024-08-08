@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:33:24 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 09:44:08 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/08 13:10:25 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	ft_is_followed_by_nl(char *str)
 	void	ft_error_sms_invalid_path(char **map, char **map_cloned, char chr)
 {
 	ft_free_matriz(map);
-	//ft_free_matriz(map_cloned);
 	ft_putendl_fd("Error", 2);
 	if (chr == 'E')
 		ft_putendl_fd("Error: No Path In The Map To Exit.", 2);

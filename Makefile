@@ -6,7 +6,7 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/07 19:05:25 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/08 10:56:55 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 		make -s -C $(LIBFT)
-		$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a
-		make clean
+		$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
+		
 
 clean:
 	make clean -s -C $(LIBFT)

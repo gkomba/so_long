@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 09:16:23 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/08 11:50:13 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,50 @@ char	**ft_build_map(char *get_map_string)
 
 void	ft_init_map(char *map_name)
 {
-	int i;
-	t_map 	map;
+	char **map;
 
 	ft_handle_map_extension(map_name);
-	map.map = ft_get_map(map_name);
-	ft_handle_map_components(map.map);
-	ft_hande_map_form(map.map);
-	ft_handle_map_walls(map.map);
-	ft_handle_map_components_player(map.map);
-	ft_handle_map_components_collectible(map.map);
-	ft_handle_map_components_exit(map.map);
-    ft_handle_map_path(map.map, 'C', 'E');
-    ft_handle_map_path(map.map, 'E', 'G');
-	i = -1;
-	while (map.map[++i])
-		printf("%s\n", map.map[i]);
-	ft_free_matriz(map.map);
+	map = ft_get_map(map_name);
+	ft_handle_map_components(map);
+	ft_hande_map_form(map);
+	ft_handle_map_walls(map);
+	ft_handle_map_components_player(map);
+	ft_handle_map_components_collectible(map);
+	ft_handle_map_components_exit(map);
+	ft_handle_map_path(map, 'C', 'E');
+	ft_handle_map_path(map, 'E', 'G');
+	ft_free_matriz(map);
 }
 
-void init_game(void)
+void	ft_init_game(char *map_name)
 {
-	
-	return ;
+	t_map map;
+	t_win mlx;
+
+	map.map = ft_get_map(map_name);
+	map.wdth = (ft_strlen(map.map[0]) * OBJECT_SIZE);
+	map.hgth = (ft_matriz_len(map.map) * OBJECT_SIZE);
+	mlx.init = mlx_init();
+	if (!mlx.init)
+	{
+		ft_free_matriz(map.map);
+		ft_putendl_fd("Error", 2);
+		perror("Error creating conection mlx");
+		exit(EXIT_FAILURE);
+	}
+	mlx.new_win = mlx_new_window(mlx.init, map.wdth, map.hgth, "so_long");
+	if (!mlx.new_win)
+	{
+		ft_free_matriz(map.map);
+		free(mlx.init);
+		ft_putendl_fd("Error", 2);
+		perror("Error opening the windw mlx");
+		mlx_destroy_display(mlx.init);
+		exit(EXIT_FAILURE);
+	}
+	ft_free_matriz(map.map);
+	mlx_loop(mlx.init);
+	mlx_destroy_window(mlx.init, mlx.new_win);
+	mlx_destroy_display(mlx.init);
+	free(mlx.init);
 }
