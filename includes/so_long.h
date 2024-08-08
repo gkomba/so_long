@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/07 19:04:25 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/08 09:22:45 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_vars
+typedef struct s_map
 {
+	char	**map;
 	char	avoid;
-	char	to_fill;
 	int		finded;
-}			t_vars;
+	int		i_lines;
+	int		i_coluns;
+	int		count_colletibles;
+}			t_map;
 
 void		ft_init_map(char *map_name);
 char		**ft_get_map(char *map_addres);
@@ -40,7 +43,8 @@ void		ft_handle_map_components_exit(char **map);
 void		ft_handle_map_components_collectible(char **map);
 void		ft_map_is_surrounded_by_walls(char **map);
 void		ft_handle_map_path(char **map, char fill, char avoid);
-void		flood_fill(char **map, int x, int y, t_vars vars);
+void		ft_error_sms_invalid_path(char **map, char **map_cloned, char chr);
+void		flood_fill(char **map, int x, int y, t_map *vars);
 int			ft_has_only_this_chars_on_string(char *str, char *map_components);
 int			ft_has_only_this_char_on_sring(char *str, char chr);
 int			ft_count_chr_occurrency_on_map(char **map, char chr);
