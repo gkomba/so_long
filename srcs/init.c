@@ -6,11 +6,13 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 11:50:13 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/09 08:54:14 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void ft_init_images(t_win *mlx);
 
 char	**ft_get_map(char *map_addres)
 {
@@ -69,31 +71,32 @@ char	**ft_build_map(char *get_map_string)
 	return (get_map_matriz);
 }
 
-void	ft_init_map(char *map_name)
+void	ft_init_map(char *map_address)
 {
-	char **map;
+	t_map map;
 
-	ft_handle_map_extension(map_name);
-	map = ft_get_map(map_name);
-	ft_handle_map_components(map);
-	ft_hande_map_form(map);
-	ft_handle_map_walls(map);
-	ft_handle_map_components_player(map);
-	ft_handle_map_components_collectible(map);
-	ft_handle_map_components_exit(map);
-	ft_handle_map_path(map, 'C', 'E');
-	ft_handle_map_path(map, 'E', 'G');
-	ft_free_matriz(map);
+	ft_handle_map_extension(map_address);
+	map.map = ft_get_map(map_address);
+	ft_handle_map_components(map.map);
+	ft_hande_map_form(map.map);
+	ft_handle_map_walls(map.map);
+	ft_handle_map_components_player(map.map);
+	ft_handle_map_components_collectible(map.map);
+	ft_handle_map_components_exit(map.map);
+	ft_handle_map_path(map.map, 'C', 'E');
+	ft_handle_map_path(map.map, 'E', 'G');
+	ft_free_matriz(map.map);
 }
 
-void	ft_init_game(char *map_name)
+void	ft_init_game(char *map_address)
 {
 	t_map map;
 	t_win mlx;
 
-	map.map = ft_get_map(map_name);
+	map.map = ft_get_map(map_address);
 	map.wdth = (ft_strlen(map.map[0]) * OBJECT_SIZE);
 	map.hgth = (ft_matriz_len(map.map) * OBJECT_SIZE);
+	//printf("LARGURA DO MAPA %d\n", map.wdth);
 	mlx.init = mlx_init();
 	if (!mlx.init)
 	{
@@ -113,8 +116,45 @@ void	ft_init_game(char *map_name)
 		exit(EXIT_FAILURE);
 	}
 	ft_free_matriz(map.map);
+	ft_init_images(&mlx);
+	render_map(map_address, &mlx, &map);
 	mlx_loop(mlx.init);
 	mlx_destroy_window(mlx.init, mlx.new_win);
 	mlx_destroy_display(mlx.init);
 	free(mlx.init);
+}
+
+void ft_init_images(t_win *mlx)
+{
+	mlx->img_background = mlx_xpm_file_to_image(mlx->init, "./assets/Background.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_collectible = mlx_xpm_file_to_image(mlx->init, "./assets/Colletible.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_exit = mlx_xpm_file_to_image(mlx->init, "./assets/exit.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_player = mlx_xpm_file_to_image(mlx->init, "./assets/Player.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm", &mlx->wdth, &mlx->hgth);
+	if (!mlx->img_player)
+	{
+    	ft_putendl_fd("Error: Failed to load one or more images P", 2);
+    	exit(EXIT_FAILURE);
+	} 
+	else if(!mlx->img_collectible)
+	{
+    	ft_putendl_fd("Error: Failed to load one or more images C", 2);
+    	exit(EXIT_FAILURE);
+	}
+	else if (!mlx->img_exit)
+	{
+    	ft_putendl_fd("Error: Failed to load one or more images E", 2);
+    	exit(EXIT_FAILURE);
+	}
+	else if (!mlx->img_background)
+	{
+    	ft_putendl_fd("Error: Failed to load one or more images B", 2);
+    	exit(EXIT_FAILURE);
+	}
+	else if (!mlx->img_wall)
+	{
+    	ft_putendl_fd("Error: Failed to load one or more images W", 2);
+    	exit(EXIT_FAILURE);
+	} 
+	printf("deu aqui\n");
 }
