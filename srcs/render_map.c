@@ -6,25 +6,11 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:47:13 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/09 11:02:16 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/10 14:08:43 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-char	*ft_get_object_path(char object)
-{
-	if (object == 'P')
-		return ("../assets/Player.xmp");
-	else if (object == '0')
-		return ("../assets/Background.xpm");
-	else if (object == '1')
-		return ("../assets/Wall.xpm");
-	else if (object == 'E')
-		return ("../assets/Exit.xpm");
-	else if (object == 'C')
-		return ("../assets/Colletible.xpm");
-}
 
 void	render_map(char *map_address, t_win *mlx, t_map *map, t_image *img)
 {

@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:19:11 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 10:45:51 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/10 17:42:17 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_has_only_this_char_on_sring(char *str, char chr)
 
 	i = -1;
 	while (str[++i])
-		if (str[i] != '1')
+		if (str[i] != chr)
 			return (0);
 	return (1);
 }

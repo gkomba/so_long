@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/09 10:23:00 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/10 17:27:58 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_init_game(char *map_address)
 {
 	t_map	map;
 	t_win	mlx;
-	t_image img;
+	t_image	img;
 
 	map.map = ft_get_map(map_address);
 	map.wdth = (ft_strlen(map.map[0]) * OBJECT_SIZE);
@@ -111,7 +111,7 @@ void	ft_init_game(char *map_address)
 		ft_free_matriz(map.map);
 		free(mlx.init);
 		ft_putendl_fd("Error", 2);
-		perror("Error opening the windw mlx");
+		perror("Error opening the window mlx");
 		mlx_destroy_display(mlx.init);
 		exit(EXIT_FAILURE);
 	}
@@ -129,16 +129,17 @@ void	ft_init_images(t_win *mlx, t_image *img)
 	img->img_background = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Background.xpm", &img->wdth, &img->hgth);
 	img->img_collectible = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Colletible.xpm", &img->wdth, &img->hgth);
-	img->img_exit = mlx_xpm_file_to_image(mlx->init, "./assets/exit.xpm",
-			&img->wdth, &img->hgth);
-	img->img_player = mlx_xpm_file_to_image(mlx->init, "./assets/Player.xpm",
-			&img->wdth, &img->hgth);
+			"./assets/Collectible.xpm", &img->wdth, &img->hgth);
+	img->img_exit = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_left.xpm", &img->wdth, &img->hgth);
+	img->img_player = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_front.xpm", &img->wdth, &img->hgth);
 	img->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
 			&img->wdth, &img->hgth);
 	if (!img->img_wall || !img->img_background || !img->img_player
 		|| !img->img_collectible || !img->img_exit)
 	{
+		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Error: Failed to load one or more img", 2);
 		exit(EXIT_FAILURE);
 	}
