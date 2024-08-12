@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/09 10:23:43 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 14:22:44 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@
 # include <stdio.h>
 # include <stdlib.h>
 # define OBJECT_SIZE 45
+
+typedef struct s_images
+{
+	void	*img_wall;
+	void	*img_exit;
+	void	*img_player_front;
+	void	*img_player_back;
+	void	*img_player_rigth;
+	void	*img_player_left;
+	void	*img_background;
+	void	*img_collectible;
+	void	*img_player_pos;
+	int		wdth;
+	int		hgth;
+}			t_image;
 
 typedef struct s_map
 {
@@ -38,25 +53,20 @@ typedef struct s_win
 	void	*img;
 	int		x_pos;
 	int		y_pos;
+	char	**map;
+	t_image	*image;
 }			t_win;
-
-typedef struct s_images
-{
-	void	*img_wall;
-	void	*img_exit;
-	void	*img_player;
-	void	*img_background;
-	void	*img_collectible;
-	int		wdth;
-	int		hgth;
-}			t_image;
 
 void		ft_init_game(char *map_address);
 void		ft_init_map(char *map_addres);
 char		**ft_get_map(char *map_addres);
 char		**ft_build_map(char *get_map_string);
 char		**ft_clone_map(char **map);
-void render_map(char *map_address, t_win *mlx, t_map *map, t_image *img);
+void		ft_move_to_up(t_win *mlx);
+void		ft_move_to_rigth(t_win *mlx);
+void		ft_move_to_left(t_win *mlx);
+void		ft_move_to_down(t_win *mlx);
+void		render_map(t_win *mlx, t_map *map);
 void		ft_is_followed_by_nl(char *str);
 void		ft_handle_map_extension(char *map);
 void		ft_hande_map_form(char **map);

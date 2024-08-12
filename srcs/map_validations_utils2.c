@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:33:24 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 13:10:25 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 09:22:29 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_is_followed_by_nl(char *str)
 			{
 				free(str);
 				ft_putendl_fd("Error", 2);
-				ft_putendl_fd("Error: Error building the map", 2);
+				ft_putendl_fd("Error: Empty Line On Map", 2);
 				exit(EXIT_FAILURE);
 			}
 		}

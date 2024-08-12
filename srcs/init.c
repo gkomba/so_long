@@ -6,13 +6,13 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/10 17:27:58 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 14:24:19 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_init_images(t_win *mlx, t_image *img);
+void	ft_init_images(t_win *mlx);
 
 char	**ft_get_map(char *map_addres)
 {
@@ -88,19 +88,46 @@ void	ft_init_map(char *map_address)
 	ft_free_matriz(map.map);
 }
 
+int	ft_handle_key(int keycode, t_win *mlx)
+{
+	t_map	vars;
+	t_image	img;
+	int		j;
+	int		i;
+	int		h;
+
+	j = 0;
+	i = 0;
+	if (keycode == 65307)
+	{
+		mlx_destroy_window(mlx->init, mlx->new_win);
+		exit(EXIT_SUCCESS);
+	}
+	else if (keycode == 65362)
+		ft_move_to_up(mlx);
+	else if (keycode == 65361)
+		ft_move_to_left(mlx);
+	else if (keycode == 65364)
+		ft_move_to_down(mlx);
+	else if (keycode == 65363)
+		ft_move_to_down(mlx);
+	render_map(mlx, &vars);
+	return (0);
+}
+
 void	ft_init_game(char *map_address)
 {
 	t_map	map;
 	t_win	mlx;
 	t_image	img;
 
-	map.map = ft_get_map(map_address);
-	map.wdth = (ft_strlen(map.map[0]) * OBJECT_SIZE);
-	map.hgth = (ft_matriz_len(map.map) * OBJECT_SIZE);
+	mlx.map = ft_get_map(map_address);
+	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE);
+	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE);
 	mlx.init = mlx_init();
 	if (!mlx.init)
 	{
-		ft_free_matriz(map.map);
+		ft_free_matriz(mlx.map);
 		ft_putendl_fd("Error", 2);
 		perror("Error creating conection mlx");
 		exit(EXIT_FAILURE);
@@ -108,36 +135,56 @@ void	ft_init_game(char *map_address)
 	mlx.new_win = mlx_new_window(mlx.init, map.wdth, map.hgth, "so_long");
 	if (!mlx.new_win)
 	{
-		ft_free_matriz(map.map);
+		ft_free_matriz(mlx.map);
 		free(mlx.init);
 		ft_putendl_fd("Error", 2);
 		perror("Error opening the window mlx");
 		mlx_destroy_display(mlx.init);
 		exit(EXIT_FAILURE);
 	}
-	ft_free_matriz(map.map);
-	ft_init_images(&mlx, &img);
-	render_map(map_address, &mlx, &map, &img);
+	ft_init_images(&mlx);
+	render_map(&mlx, &map);
+	mlx_hook(mlx.new_win, 2, 1L << 0, ft_handle_key, &mlx);
+	// ft_free_matriz(map.map);
 	mlx_loop(mlx.init);
 	mlx_destroy_window(mlx.init, mlx.new_win);
 	mlx_destroy_display(mlx.init);
 	free(mlx.init);
 }
 
-void	ft_init_images(t_win *mlx, t_image *img)
+void	ft_init_images(t_win *mlx)
 {
-	img->img_background = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Background.xpm", &img->wdth, &img->hgth);
-	img->img_collectible = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Collectible.xpm", &img->wdth, &img->hgth);
-	img->img_exit = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_left.xpm", &img->wdth, &img->hgth);
-	img->img_player = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_front.xpm", &img->wdth, &img->hgth);
-	img->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
-			&img->wdth, &img->hgth);
-	if (!img->img_wall || !img->img_background || !img->img_player
-		|| !img->img_collectible || !img->img_exit)
+	mlx->image->img_background = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Background.xpm", &mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_collectible = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Collectible.xpm", &mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_exit = mlx_xpm_file_to_image(mlx->init, "./assets/Exit.xpm",
+			&mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_player_front = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_front.xpm", &mlx->image->wdth,
+			&mlx->image->hgth);
+	mlx->image->img_player_back = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_back.xpm", &mlx->image->wdth,
+			&mlx->image->hgth);
+	mlx->image->img_player_left = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_left.xpm", &mlx->image->wdth,
+			&mlx->image->hgth);
+	mlx->image->img_player_rigth = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_rigth.xpm", &mlx->image->wdth,
+			&mlx->image->hgth);
+	mlx->image->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
+			&mlx->image->wdth, &mlx->image->hgth);
+	if (!mlx->image->img_wall || !mlx->image->img_background
+		|| !mlx->image->img_player_front || !mlx->image->img_player_back
+		|| !mlx->image->img_player_left || !mlx->image->img_exit
+		|| !mlx->image->img_collectible || !mlx->image->img_player_rigth)
+	{
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error: Failed to load one or more img", 2);
+		exit(EXIT_FAILURE);
+	}
+	mlx->image->img_player_pos = mlx->image->img_player_front;
+	if (!mlx->image->img_player_pos)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Error: Failed to load one or more img", 2);

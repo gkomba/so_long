@@ -6,7 +6,7 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/09 06:57:44 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/12 14:16:00 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS = srcs/so_long.c\
 		srcs/map_validations_utils1.c\
 		srcs/map_validations_utils2.c\
 		srcs/flood_fill.c\
-		srcs/render_map.c
+		srcs/render_map.c\
+		srcs/events.c
 
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
