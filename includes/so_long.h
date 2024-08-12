@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 17:30:44 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 18:23:24 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # define OBJECT_SIZE 45
-
-typedef struct  vars
-{
-	int i_lines;
-	int i_columns
-	
-};
 
 typedef struct s_images
 {

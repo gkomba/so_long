@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 09:41:00 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 17:31:40 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 18:03:42 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 void	ft_move_to_up(t_win *mlx)
 {
-	int i_lines;
-	int i_colums;
+	t_map vars;
 
-	i_lines = -1;
+	vars.i_lines = -1;
 	mlx->x_pos = 0;
 	mlx->y_pos = 0;
-	while (mlx->map[++i_lines])
+	while (mlx->map[++vars.i_lines])
 	{
-		i_colums = -1;
-		while (mlx->map[i_lines][++i_colums])
+		vars.i_coluns = -1;
+		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
-			if (mlx->map[i_lines][i_colums] == 'P')
+			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
             {
-                mlx->x_pos = i_lines;
-                mlx->y_pos = i_colums;
+                mlx->x_pos = vars.i_lines;
+                mlx->y_pos = vars.i_coluns;
             }
 		}
 	}
@@ -45,21 +44,20 @@ void	ft_move_to_up(t_win *mlx)
 
 void ft_move_to_left(t_win *mlx)
 {
-    int i_lines;
-	int i_colums;
+    t_map vars;
 
-	i_lines = -1;
+	vars.i_lines = -1;
 	mlx->x_pos = 0;
 	mlx->y_pos = 0;
-	while (mlx->map[++i_lines])
+	while (mlx->map[++vars.i_lines])
 	{
-		i_colums = -1;
-		while (mlx->map[i_lines][++i_colums])
+		vars.i_coluns = -1;
+		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
-			if (mlx->map[i_lines][i_colums] == 'P')
+			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
             {
-                mlx->x_pos = i_lines;
-                mlx->y_pos = i_colums;
+                mlx->x_pos = vars.i_lines;
+                mlx->y_pos = vars.i_coluns;
             }
 		}
 	}
@@ -76,21 +74,20 @@ void ft_move_to_left(t_win *mlx)
 
 void ft_move_to_down(t_win *mlx)
 {
-    int i_lines;
-	int i_colums;
+    t_map vars;
 
-	i_lines = -1;
+	vars.i_lines = -1;
 	mlx->x_pos = 0;
 	mlx->y_pos = 0;
-	while (mlx->map[++i_lines])
+	while (mlx->map[++vars.i_lines])
 	{
-		i_colums = -1;
-		while (mlx->map[i_lines][++i_colums])
+		vars.i_coluns = -1;
+		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
-			if (mlx->map[i_lines][i_colums] == 'P')
+			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
             {
-                mlx->x_pos = i_lines;
-                mlx->y_pos = i_colums;
+                mlx->x_pos = vars.i_lines;
+                mlx->y_pos = vars.i_coluns;
             }
 		}
 	}
@@ -114,13 +111,13 @@ void ft_move_to_rigth(t_win *mlx)
 	mlx->y_pos = 0;
 	while (mlx->map[++vars.i_lines])
 	{
-		i_colums = -1;
-		while (mlx->map[i_lines][++i_colums])
+		vars.i_coluns = -1;
+		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
-			if (mlx->map[i_lines][i_colums] == 'P')
+			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
             {
-                mlx->x_pos = i_lines;
-                mlx->y_pos = i_colums;
+                mlx->x_pos = vars.i_lines;
+                mlx->y_pos = vars.i_coluns;
             }
 		}
 	}
