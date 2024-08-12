@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 14:24:19 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/12 17:16:09 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,7 @@ void	ft_init_map(char *map_address)
 int	ft_handle_key(int keycode, t_win *mlx)
 {
 	t_map	vars;
-	t_image	img;
-	int		j;
-	int		i;
-	int		h;
 
-	j = 0;
-	i = 0;
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(mlx->init, mlx->new_win);
@@ -110,7 +104,7 @@ int	ft_handle_key(int keycode, t_win *mlx)
 	else if (keycode == 65364)
 		ft_move_to_down(mlx);
 	else if (keycode == 65363)
-		ft_move_to_down(mlx);
+		ft_move_to_rigth(mlx);
 	render_map(mlx, &vars);
 	return (0);
 }
