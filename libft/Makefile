@@ -39,7 +39,7 @@ files 	   = ft_strlen \
 			 ft_free_matriz\
 			 ft_matriz_len\
 
-Compiler	= gcc
+Compiler	= cc
 
 CmpFlags	= -Wall -Wextra -Werror
 
@@ -52,16 +52,16 @@ OFILES	= $(files:%=%.o)
 NAME	= $(OUTN)
 
 $(NAME):
-	@$(Compiler) $(CmpFlags) -c $(CFILES) -I./
-	@ar -rc $(OUTN) $(OFILES)
+	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
+	ar -rc $(OUTN) $(OFILES)
 
 all: $(NAME)
 
 clean:
-	@rm -f $(OFILES)
+	rm -f $(OFILES)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

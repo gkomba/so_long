@@ -6,7 +6,7 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/12 14:16:00 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/13 12:17:22 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,18 @@ LIBFT = libft
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		make -s -C $(LIBFT)
+		make -C $(LIBFT)
 		$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
 		
 
 clean:
-	make clean -s -C $(LIBFT)
+	make clean -C $(LIBFT)
 	$(RM) $(OBJS)
 
 fclean: clean
-		make fclean -s -C $(LIBFT)
+		make fclean -C $(LIBFT)
 		$(RM) $(NAME)
+
 re: fclean all
 
 .PHONY: all clean fclean re

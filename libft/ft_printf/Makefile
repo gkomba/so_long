@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gkomba <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/23 20:21:07 by gkomba            #+#    #+#              #
-#    Updated: 2024/05/23 20:21:13 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/13 08:28:22 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	ft_print_char.c\
 		
 OBJS = ${SRCS:.c=.o}
 LIBC = ar rcs
-CC = gcc
+CC = cc
 RM = rm -f
 CFLAGS = -W -W -W
 
