@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 17:16:09 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/13 18:29:27 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_init_map(char *map_address)
 {
 	t_map	map;
 
+	ft_memset(&map, 0, sizeof(map));
 	ft_handle_map_extension(map_address);
 	map.map = ft_get_map(map_address);
 	ft_handle_map_components(map.map);
@@ -105,7 +106,6 @@ int	ft_handle_key(int keycode, t_win *mlx)
 		ft_move_to_down(mlx);
 	else if (keycode == 65363)
 		ft_move_to_rigth(mlx);
-	render_map(mlx, &vars);
 	return (0);
 }
 
@@ -115,6 +115,7 @@ void	ft_init_game(char *map_address)
 	t_win	mlx;
 	t_image	img;
 
+	ft_memset(&map, 0, sizeof(map));
 	mlx.map = ft_get_map(map_address);
 	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE);
 	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE);
@@ -139,7 +140,6 @@ void	ft_init_game(char *map_address)
 	ft_init_images(&mlx);
 	render_map(&mlx, &map);
 	mlx_hook(mlx.new_win, 2, 1L << 0, ft_handle_key, &mlx);
-	// ft_free_matriz(map.map);
 	mlx_loop(mlx.init);
 	mlx_destroy_window(mlx.init, mlx.new_win);
 	mlx_destroy_display(mlx.init);
@@ -148,37 +148,52 @@ void	ft_init_game(char *map_address)
 
 void	ft_init_images(t_win *mlx)
 {
+	mlx->image->img_background = NULL;/*137004 = 123513*/
 	mlx->image->img_background = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Background.xpm", &mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_collectible = NULL; /*123513 = 118610*/
 	mlx->image->img_collectible = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Collectible.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_exit = mlx_xpm_file_to_image(mlx->init, "./assets/Exit.xpm",
-			&mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_exit_close = NULL;  /*118610 = 111193*/
+	mlx->image->img_exit_close = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Exit_close.xpm", &mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_player_front = NULL; /*111193 = 90324*/
 	mlx->image->img_player_front = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Player/Player_front.xpm", &mlx->image->wdth,
 			&mlx->image->hgth);
+	//mlx->image->img_player_back = NULL;
 	mlx->image->img_player_back = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Player/Player_back.xpm", &mlx->image->wdth,
 			&mlx->image->hgth);
+	//mlx->image->img_player_left = NULL;
 	mlx->image->img_player_left = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Player/Player_left.xpm", &mlx->image->wdth,
 			&mlx->image->hgth);
+	//mlx->image->img_player_rigth = NULL;
 	mlx->image->img_player_rigth = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Player/Player_rigth.xpm", &mlx->image->wdth,
 			&mlx->image->hgth);
+	//mlx->image->img_wall = NULL;
 	mlx->image->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
 			&mlx->image->wdth, &mlx->image->hgth);
+	mlx->image->img_exit_open = NULL;
+	mlx->image->img_exit_open = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Exit_open.xpm", &mlx->image->wdth, &mlx->image->hgth);
 	if (!mlx->image->img_wall || !mlx->image->img_background
 		|| !mlx->image->img_player_front || !mlx->image->img_player_back
-		|| !mlx->image->img_player_left || !mlx->image->img_exit
+		|| !mlx->image->img_player_left || !mlx->image->img_exit_close
 		|| !mlx->image->img_collectible || !mlx->image->img_player_rigth)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Error: Failed to load one or more img", 2);
 		exit(EXIT_FAILURE);
 	}
+	mlx->image->img_player_pos = NULL;
 	mlx->image->img_player_pos = mlx->image->img_player_front;
-	if (!mlx->image->img_player_pos)
+	mlx->image->img_exit = NULL;
+	mlx->image->img_exit = mlx->image->img_exit_close;
+	if (!mlx->image->img_player_pos || !mlx->image->img_exit_open
+		|| !mlx->image->img_exit)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Error: Failed to load one or more img", 2);

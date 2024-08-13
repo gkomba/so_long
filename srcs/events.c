@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 09:41:00 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 18:03:42 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/13 18:28:07 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_move_to_up(t_win *mlx)
 {
-	t_map vars;
+	t_map	vars;
 
 	vars.i_lines = -1;
 	mlx->x_pos = 0;
@@ -25,26 +25,29 @@ void	ft_move_to_up(t_win *mlx)
 		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
 			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
-            {
-                mlx->x_pos = vars.i_lines;
-                mlx->y_pos = vars.i_coluns;
-            }
+			{
+				mlx->x_pos = vars.i_lines;
+				mlx->y_pos = vars.i_coluns;
+			}
 		}
 	}
 	if (mlx->map[mlx->x_pos - 1][mlx->y_pos] == '1')
-    {
-        ft_putendl_fd("Wall", 2);
-        return ;    
-    }
+		return (ft_putendl_fd("Wall", 1));
+	else if (mlx->map[mlx->x_pos - 1][mlx->y_pos] == 'E')
+	{
+		ft_get_exit(mlx);
+		return (ft_putendl_fd("The Exit is Closed", 1));
+	}
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos - 1][mlx->y_pos] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_back;
-	printf("Up\n");
+	ft_putendl_fd("Up", 1);
+	render_map(mlx, &vars);
 }
 
-void ft_move_to_left(t_win *mlx)
+void	ft_move_to_left(t_win *mlx)
 {
-    t_map vars;
+	t_map	vars;
 
 	vars.i_lines = -1;
 	mlx->x_pos = 0;
@@ -55,26 +58,29 @@ void ft_move_to_left(t_win *mlx)
 		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
 			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
-            {
-                mlx->x_pos = vars.i_lines;
-                mlx->y_pos = vars.i_coluns;
-            }
+			{
+				mlx->x_pos = vars.i_lines;
+				mlx->y_pos = vars.i_coluns;
+			}
 		}
 	}
 	if (mlx->map[mlx->x_pos][mlx->y_pos - 1] == '1')
-    {
-        ft_putendl_fd("Wall", 2);
-        return ;    
-    }
+		return (ft_putendl_fd("Wall", 1));
+	else if (mlx->map[mlx->x_pos][mlx->y_pos - 1] == 'E')
+	{
+		ft_get_exit(mlx);
+		return (ft_putendl_fd("The Exit is Closed", 1));
+	}
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos][mlx->y_pos - 1] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_left;
-	printf("Left\n");
+	ft_putendl_fd("Left", 1);
+	render_map(mlx, &vars);
 }
 
-void ft_move_to_down(t_win *mlx)
+void	ft_move_to_down(t_win *mlx)
 {
-    t_map vars;
+	t_map	vars;
 
 	vars.i_lines = -1;
 	mlx->x_pos = 0;
@@ -85,24 +91,27 @@ void ft_move_to_down(t_win *mlx)
 		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
 			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
-            {
-                mlx->x_pos = vars.i_lines;
-                mlx->y_pos = vars.i_coluns;
-            }
+			{
+				mlx->x_pos = vars.i_lines;
+				mlx->y_pos = vars.i_coluns;
+			}
 		}
 	}
 	if (mlx->map[mlx->x_pos + 1][mlx->y_pos] == '1')
-    {
-        ft_putendl_fd("Wall", 2);
-        return ;    
-    }
+		return (ft_putendl_fd("Wall", 1));
+	else if (mlx->map[mlx->x_pos + 1][mlx->y_pos] == 'E')
+	{
+		ft_get_exit(mlx);
+		return (ft_putendl_fd("The Exit is Closed", 1));
+	}
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos + 1][mlx->y_pos] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_front;
-	printf("Down\n");
+	ft_putendl_fd("Down", 1);
+	render_map(mlx, &vars);
 }
 
-void ft_move_to_rigth(t_win *mlx)
+void	ft_move_to_rigth(t_win *mlx)
 {
 	t_map vars;
 
@@ -115,19 +124,22 @@ void ft_move_to_rigth(t_win *mlx)
 		while (mlx->map[vars.i_lines][++vars.i_coluns])
 		{
 			if (mlx->map[vars.i_lines][vars.i_coluns] == 'P')
-            {
-                mlx->x_pos = vars.i_lines;
-                mlx->y_pos = vars.i_coluns;
-            }
+			{
+				mlx->x_pos = vars.i_lines;
+				mlx->y_pos = vars.i_coluns;
+			}
 		}
 	}
 	if (mlx->map[mlx->x_pos][mlx->y_pos + 1] == '1')
-    {
-        ft_putendl_fd("Wall", 2);
-        return ;    
-    }
+		return (ft_putendl_fd("Wall", 1));
+	else if (mlx->map[mlx->x_pos][mlx->y_pos + 1] == 'E')
+	{
+		ft_get_exit(mlx);
+		return (ft_putendl_fd("The Exit is Closed", 1));
+	}
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos][mlx->y_pos + 1] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_rigth;
-	printf("Rigth\n");
+	ft_putendl_fd("Rigth", 1);
+	render_map(mlx, &vars);
 }

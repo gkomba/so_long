@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/13 12:30:03 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/13 17:52:39 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_images
 {
 	void	*img_wall;
 	void	*img_exit;
+	void	*img_exit_close;
+	void	*img_exit_open;
 	void	*img_player_front;
 	void	*img_player_back;
 	void	*img_player_rigth;
@@ -62,10 +64,18 @@ void		ft_init_map(char *map_addres);
 char		**ft_get_map(char *map_addres);
 char		**ft_build_map(char *get_map_string);
 char		**ft_clone_map(char **map);
+void		ft_init_image_background(t_win *mlx);
+void		ft_init_image_wall(t_win *mlx);
+void		ft_init_image_collectible(t_win *mlx);
+void		ft_init_image_player(t_win *mlx);
+void		ft_init_image_exit(t_win *mlx);
+void		ft_check_load_image(t_win *mlx);
 void		ft_move_to_up(t_win *mlx);
 void		ft_move_to_rigth(t_win *mlx);
 void		ft_move_to_left(t_win *mlx);
 void		ft_move_to_down(t_win *mlx);
+void		ft_get_exit(t_win *mlx);
+void		ft_open_exit(t_win *mlx);
 void		render_map(t_win *mlx, t_map *map);
 void		ft_is_followed_by_nl(char *str);
 void		ft_handle_map_extension(char *map);

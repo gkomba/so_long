@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:47:13 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 14:00:00 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/13 18:00:13 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	render_map(t_win *mlx, t_map *map)
 {
+	ft_open_exit(mlx);
 	mlx->y_pos = 0;
 	map->i_lines = 0;
 	while (mlx->map[map->i_lines] != NULL)
