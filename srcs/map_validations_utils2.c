@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:33:24 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/12 09:22:29 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:43:39 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ void	ft_is_followed_by_nl(char *str)
 	i = -1;
 	while (str[++i])
 	{
+		if (str[0] == '\n')
+		{
+			free(str);
+			ft_putendl_fd("Error", 2);
+			ft_putendl_fd("Error: Empty Line On Map", 2);
+			exit(EXIT_FAILURE);
+		}
 		if (str[i] == '\n')
 		{
 			if (str[i + 1] == '\0' || str[i + 1] == '\n')
@@ -82,7 +89,7 @@ void	ft_is_followed_by_nl(char *str)
 	}
 }
 
-	void	ft_error_sms_invalid_path(char **map, char **map_cloned, char chr)
+void	ft_error_sms_invalid_path(char **map, char **map_cloned, char chr)
 {
 	ft_free_matriz(map);
 	ft_putendl_fd("Error", 2);
