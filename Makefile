@@ -6,7 +6,7 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/14 09:55:22 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/14 18:36:16 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,32 +21,28 @@ SRCS = srcs/so_long.c\
 		srcs/render_map.c\
 		srcs/events.c\
 		srcs/game_validations.c
-
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
 CC = cc
 CFALGS = -Wall -Wextra -Wall
-MLXD = minilibx-linux
 MLX = -I./minilibx-linux -L./minilibx-linux -lmlx -L/usr/include/../lib -lXext -lX11 -lm
 RM = rm -f
 LIBFT = libft
-
+MLXD = minilibx-linux
 all: $(NAME)
-
 $(NAME): $(OBJS)
 		make -C $(LIBFT)
-		make -C $(MLXD)
 		$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
 		
-
 clean:
-	make clean -s -C $(LIBFT)
+	make clean -C $(LIBFT)
 	$(RM) $(OBJS)
 
 fclean: clean
 		make fclean -C $(LIBFT)
-		make clean -C $(MLXD)
 		$(RM) $(NAME)
+
 re: fclean all
+.PHONY: all clean fclean re
 
 .PHONY: all clean fclean re
