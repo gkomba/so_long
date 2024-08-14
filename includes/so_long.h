@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/14 16:45:33 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/14 19:01:29 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_images
 	void	*img_player_pos;
 	int		wdth;
 	int		hgth;
+	int 	steps;
 }			t_image;
 
 typedef struct s_map

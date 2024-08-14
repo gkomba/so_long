@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/14 16:45:29 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/14 19:05:00 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_init_game(char *map_address)
 	mlx.map = ft_get_map(map_address);
 	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE);
 	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE);
+	mlx.image->steps = 0;
 	mlx.init = mlx_init();
 	if (!mlx.init)
 	{

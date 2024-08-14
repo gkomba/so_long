@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 09:41:00 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/14 16:45:35 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/14 19:04:08 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	ft_handle_key(int keycode, t_win *mlx)
 
 	if (keycode == 65307)
 	{
-		//free_all_imgs(mlx);
 		mlx_destroy_window(mlx->init, mlx->new_win);
 		exit(EXIT_SUCCESS);
 	}
-	else if (keycode == 65362 || keycode == 119)
+	if (keycode == 65362 || keycode == 119)
 		ft_move_to_up(mlx);
 	else if (keycode == 65361 || keycode == 97)
 		ft_move_to_left(mlx);
@@ -62,6 +61,9 @@ void	ft_move_to_up(t_win *mlx)
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos - 1][mlx->y_pos] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_back;
+	mlx->image->steps += 1;
+	ft_putnbr_fd(mlx->image->steps, 1);
+	ft_putchar_fd(10, 1);
 	ft_putendl_fd("Up", 1);
 	render_map(mlx, &vars);
 }
@@ -95,6 +97,9 @@ void	ft_move_to_left(t_win *mlx)
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos][mlx->y_pos - 1] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_left;
+	mlx->image->steps += 1;
+	ft_putnbr_fd(mlx->image->steps, 1);
+	ft_putchar_fd(10, 1);
 	ft_putendl_fd("Left", 1);
 	render_map(mlx, &vars);
 }
@@ -128,6 +133,9 @@ void	ft_move_to_down(t_win *mlx)
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos + 1][mlx->y_pos] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_front;
+	mlx->image->steps += 1;
+	ft_putnbr_fd(mlx->image->steps, 1);
+	ft_putchar_fd(10, 1);
 	ft_putendl_fd("Down", 1);
 	render_map(mlx, &vars);
 }
@@ -161,6 +169,9 @@ void	ft_move_to_rigth(t_win *mlx)
 	mlx->map[mlx->x_pos][mlx->y_pos] = '0';
 	mlx->map[mlx->x_pos][mlx->y_pos + 1] = 'P';
 	mlx->image->img_player_pos = mlx->image->img_player_rigth;
+	mlx->image->steps += 1;
+	ft_putnbr_fd(mlx->image->steps, 1);
+	ft_putchar_fd(10, 1);
 	ft_putendl_fd("Rigth", 1);
 	render_map(mlx, &vars);
 }
