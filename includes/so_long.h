@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 11:42:47 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 13:59:57 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ char		**ft_build_map(char *get_map_string);
 char		**ft_clone_map(char **map);
 int			ft_handle_key(int keycode, t_win *mlx);
 void		ft_init_images(t_win *mlx);
-/*void		ft_init_image_background(t_win *mlx);
-void		ft_init_image_wall(t_win *mlx);
-void		ft_init_image_collectible(t_win *mlx);
-void		ft_init_image_player(t_win *mlx);
-void	ft_init_image_exit(t_win *mlx);*/
+void		ft_free_mlx(t_win *mlx);
 void		ft_check_load_image(t_win *mlx);
 void		free_all_imgs(t_win *mlx);
 void		ft_move_to_up(t_win *mlx);

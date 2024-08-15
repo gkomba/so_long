@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 09:41:00 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 08:26:32 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 15:00:46 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ int	ft_handle_key(int keycode, t_win *mlx)
 
 	if (keycode == 65307 || keycode == 113)
 	{
+		free_all_imgs(mlx);
+		if (mlx->img_exit_open)
+			mlx_destroy_image(mlx->init, mlx->img_exit_open);
+		ft_free_matriz(mlx->map);
 		mlx_destroy_window(mlx->init, mlx->new_win);
+		mlx_destroy_display(mlx->init);
+		free(mlx->init);
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode == 65362 || keycode == 119)
