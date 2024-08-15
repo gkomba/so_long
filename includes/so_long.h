@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 08:24:17 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 11:42:47 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # define OBJECT_SIZE 45
-
-typedef struct s_images
-{
-	void	*img_wall;
-	void	*img_exit;
-	void	*img_exit_close;
-	void	*img_exit_open;
-	void	*img_player_front;
-	void	*img_player_back;
-	void	*img_player_rigth;
-	void	*img_player_left;
-	void	*img_background;
-	void	*img_collectible;
-	void	*img_player_pos;
-	int		wdth;
-	int		hgth;
-	int		steps;
-}			t_image;
 
 typedef struct s_map
 {
@@ -51,13 +33,26 @@ typedef struct s_map
 
 typedef struct s_win
 {
+	char	**map;
 	void	*init;
 	void	*new_win;
 	void	*img;
-	int		x_pos;
+	void	*img_wall;
+	void	*img_exit;
+	void	*img_exit_close;
+	void	*img_exit_open;
+	void	*img_player_front;
+	void	*img_player_back;
+	void	*img_player_rigth;
+	void	*img_player_left;
+	void	*img_background;
+	void	*img_collectible;
+	void	*img_player_pos;
 	int		y_pos;
-	char	**map;
-	t_image	*image;
+	int		x_pos;
+	int		wdth;
+	int		hgth;
+	int		steps;
 }			t_win;
 
 void		ft_init_game(char *map_address);

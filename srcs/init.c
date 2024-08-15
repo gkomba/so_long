@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 07:45:35 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 11:43:34 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ void	ft_init_game(char *map_address)
 {
 	t_map	map;
 	t_win	mlx;
-	t_image	img;
 
 	ft_memset(&map, 0, sizeof(map));
 	mlx.map = ft_get_map(map_address);
 	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE);
 	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE);
-	mlx.image->steps = 0;
+	mlx.steps = 0;
 	mlx.init = mlx_init();
 	if (!mlx.init)
 	{
@@ -70,27 +69,27 @@ void	ft_init_game(char *map_address)
 
 void	ft_init_images(t_win *mlx)
 {
-	mlx->image->img_background = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Background.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_collectible = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Collectible.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_exit_close = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Exit_close.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_player_front = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_front.xpm", &mlx->image->wdth,
-			&mlx->image->hgth);
-	mlx->image->img_player_back = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_back.xpm", &mlx->image->wdth,
-			&mlx->image->hgth);
-	mlx->image->img_player_left = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_left.xpm", &mlx->image->wdth,
-			&mlx->image->hgth);
-	mlx->image->img_player_rigth = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Player/Player_rigth.xpm", &mlx->image->wdth,
-			&mlx->image->hgth);
-	mlx->image->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
-			&mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_exit_open = mlx_xpm_file_to_image(mlx->init,
-			"./assets/Exit_open.xpm", &mlx->image->wdth, &mlx->image->hgth);
+	mlx->img_background = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Background.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_collectible = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Collectible.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_exit_close = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Exit_close.xpm", &mlx->wdth, &mlx->hgth);
+	mlx->img_player_front = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_front.xpm", &mlx->wdth,
+			&mlx->hgth);
+	mlx->img_player_back = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_back.xpm", &mlx->wdth,
+			&mlx->hgth);
+	mlx->img_player_left = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_left.xpm", &mlx->wdth,
+			&mlx->hgth);
+	mlx->img_player_rigth = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Player/Player_rigth.xpm", &mlx->wdth,
+			&mlx->hgth);
+	mlx->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
+			&mlx->wdth, &mlx->hgth);
+	mlx->img_exit_open = mlx_xpm_file_to_image(mlx->init,
+			"./assets/Exit_open.xpm", &mlx->wdth, &mlx->hgth);
 	ft_check_load_image(mlx);
 }
