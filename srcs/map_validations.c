@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 18:38:14 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/08 10:45:32 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 07:50:08 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	ft_handle_map_walls(char **map)
 
 void	ft_handle_map_path(char **map, char fill, char avoid)
 {
-	char **map_to_fill;
-	t_map vars;
+	char		**map_to_fill;
+	t_map		vars;
 
 	vars.i_lines = -1;
 	vars.avoid = avoid;

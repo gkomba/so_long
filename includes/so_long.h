@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 19:15:23 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/14 19:01:29 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 08:24:17 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_images
 	void	*img_player_pos;
 	int		wdth;
 	int		hgth;
-	int 	steps;
+	int		steps;
 }			t_image;
 
 typedef struct s_map
@@ -78,6 +78,10 @@ void		ft_move_to_up(t_win *mlx);
 void		ft_move_to_rigth(t_win *mlx);
 void		ft_move_to_left(t_win *mlx);
 void		ft_move_to_down(t_win *mlx);
+void		ft_put_player_pos_up(t_win *mlx);
+void		ft_put_player_pos_left(t_win *mlx);
+void		ft_put_player_pos_down(t_win *mlx);
+void		ft_put_player_pos_rigth(t_win *mlx);
 void		ft_get_exit(t_win *mlx);
 void		ft_open_exit(t_win *mlx);
 void		render_map(t_win *mlx, t_map *map);

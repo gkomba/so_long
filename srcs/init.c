@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/14 19:05:00 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 07:45:35 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,12 @@ void	ft_init_game(char *map_address)
 
 void	ft_init_images(t_win *mlx)
 {
-	mlx->image->img_background = NULL;/*137004 = 123513*/
 	mlx->image->img_background = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Background.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_collectible = NULL; /*123513 = 118610*/
 	mlx->image->img_collectible = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Collectible.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_exit_close = NULL;  /*118610 = 111193*/
 	mlx->image->img_exit_close = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Exit_close.xpm", &mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_player_front = NULL; /*111193 = 90324*/
 	mlx->image->img_player_front = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Player/Player_front.xpm", &mlx->image->wdth,
 			&mlx->image->hgth);
@@ -94,28 +90,7 @@ void	ft_init_images(t_win *mlx)
 			&mlx->image->hgth);
 	mlx->image->img_wall = mlx_xpm_file_to_image(mlx->init, "./assets/Wall.xpm",
 			&mlx->image->wdth, &mlx->image->hgth);
-	mlx->image->img_exit_open = NULL;
 	mlx->image->img_exit_open = mlx_xpm_file_to_image(mlx->init,
 			"./assets/Exit_open.xpm", &mlx->image->wdth, &mlx->image->hgth);
 	ft_check_load_image(mlx);
-	/*if (!mlx->image->img_wall || !mlx->image->img_background
-		|| !mlx->image->img_player_front || !mlx->image->img_player_back
-		|| !mlx->image->img_player_left || !mlx->image->img_exit_close
-		|| !mlx->image->img_collectible || !mlx->image->img_player_rigth)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Error: Failed to load one or more img", 2);
-		exit(EXIT_FAILURE);
-	}
-	mlx->image->img_player_pos = NULL;
-	mlx->image->img_player_pos = mlx->image->img_player_front;
-	mlx->image->img_exit = NULL;
-	mlx->image->img_exit = mlx->image->img_exit_close;
-	if (!mlx->image->img_player_pos || !mlx->image->img_exit_open
-		|| !mlx->image->img_exit)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Error: Failed to load one or more img", 2);
-		exit(EXIT_FAILURE);
-	}*/
 }
