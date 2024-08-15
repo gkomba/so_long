@@ -6,7 +6,7 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:49:35 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 14:02:27 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 15:31:37 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_init_game(char *map_address)
 	mlx.steps = 0;
 	ft_mlx_init_game(&mlx, &map);
 	mlx_hook(mlx.new_win, 2, 1L << 0, ft_handle_key, &mlx);
+	mlx_hook(mlx.new_win, 17, 0, ft_close, &mlx);
 	mlx_loop(mlx.init);
 	ft_free_mlx(&mlx);
 }

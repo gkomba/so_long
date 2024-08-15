@@ -6,7 +6,7 @@
 #    By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 17:24:03 by gkomba            #+#    #+#              #
-#    Updated: 2024/08/15 08:40:36 by gkomba           ###   ########.fr        #
+#    Updated: 2024/08/15 15:21:22 by gkomba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ MLXD = minilibx-linux
 all: $(NAME)
 $(NAME): $(OBJS)
 		make -C $(LIBFT)
-		$(CC) ${CFALGS} -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
+		$(CC) ${CFALGS} -g -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
 		
 clean:
 	make clean -C $(LIBFT)

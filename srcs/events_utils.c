@@ -6,11 +6,23 @@
 /*   By: gkomba <<marvin@42.fr> >                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 08:22:57 by gkomba            #+#    #+#             */
-/*   Updated: 2024/08/15 11:44:05 by gkomba           ###   ########.fr       */
+/*   Updated: 2024/08/15 15:31:51 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	ft_close(t_win *mlx)
+{
+	free_all_imgs(mlx);
+	if (mlx->img_exit_open)
+		mlx_destroy_image(mlx->init, mlx->img_exit_open);
+	ft_free_matriz(mlx->map);
+	mlx_destroy_window(mlx->init, mlx->new_win);
+	mlx_destroy_display(mlx->init);
+	free(mlx->init);
+	exit(EXIT_SUCCESS);
+}
 
 void	ft_put_player_pos_up(t_win *mlx)
 {
