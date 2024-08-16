@@ -76,15 +76,12 @@ void	ft_is_followed_by_nl(char *str)
 			ft_putendl_fd("Error: Empty Line On Map", 2);
 			exit(EXIT_FAILURE);
 		}
-		if (str[i] == '\n')
+		if (str[i] == '\n' && str[i + 1] == '\n')
 		{
-			if (str[i + 1] == '\0' || str[i + 1] == '\n')
-			{
-				free(str);
-				ft_putendl_fd("Error", 2);
-				ft_putendl_fd("Error: Empty Line On Map", 2);
-				exit(EXIT_FAILURE);
-			}
+			free(str);
+			ft_putendl_fd("Error", 2);
+			ft_putendl_fd("Error: Empty Line On Map", 2);
+			exit(EXIT_FAILURE);
 		}
 	}
 }

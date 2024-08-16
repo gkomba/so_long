@@ -31,20 +31,33 @@ MLX = -I./minilibx-linux -L./minilibx-linux -lmlx -L/usr/include/../lib -lXext -
 RM = rm -f
 LIBFT = libft
 MLXD = minilibx-linux
+
 all: $(NAME)
+
 $(NAME): $(OBJS)
 		make -C $(LIBFT)
+		make -C $(MLXD)
 		$(CC) ${CFALGS} -g -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
-		
+
+norm:
+	norminette
+
+git:
+	git status
+	git add .
+	git status
+	git commit -m "UPDATED"
+	git push
+	
 clean:
 	make clean -C $(LIBFT)
+	make clean -C $(MLXD)
 	$(RM) $(OBJS)
 
 fclean: clean
-		make fclean -C $(LIBFT)
-		$(RM) $(NAME)
+	make fclean -C $(LIBFT)
+	$(RM) $(NAME)
 
 re: fclean all
-.PHONY: all clean fclean re
 
 .PHONY: all clean fclean re
