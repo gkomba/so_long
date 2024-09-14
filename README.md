@@ -5,6 +5,23 @@ and some other very basic gameplay elements.
 
 # How to Play
 
+1 - Clone the repository
 ```bash
-git clone https://github.com/gkomba/so_long.git && cd so_long && cd minilibx-linux && chmod 777 * && cd .. && make && so_long maps/maps2.ber
+git clone https://github.com/gkomba/so_long.git
+```
+
+2 - Requirements
+You must have the minilibx, if you don´t have it you can download
+Donwload the libare on this link address
+https://cdn.intra.42.fr/document/document/26192/minilibx-linux.tgz
+After downloading, extract it with the name minilibx-linux and put it in the game repository
+
+3 - complile the game
+```bash
+make
+```
+
+4 - Run the game
+```bash
+so_long maps/maps2.ber
 ```
