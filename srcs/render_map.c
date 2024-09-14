@@ -35,12 +35,12 @@ static void	render_image_on_map(t_win *mlx, t_map *map)
 
 void	render_map(t_win *mlx, t_map *map)
 {
-	mlx->y_pos = 0;
+	mlx->y_pos = 45;
 	map->i_lines = 0;
 	while (mlx->map[map->i_lines] != NULL)
 	{
 		map->i_coluns = 0;
-		mlx->x_pos = 0;
+		mlx->x_pos = 45;
 		while (mlx->map[map->i_lines][map->i_coluns] != '\0')
 		{
 			render_image_on_map(mlx, map);

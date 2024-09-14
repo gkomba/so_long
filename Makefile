@@ -35,8 +35,8 @@ MLXD = minilibx-linux
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		make -C $(LIBFT)
 		make -C $(MLXD)
+		make -C $(LIBFT)
 		$(CC) ${CFALGS} -g -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX)
 
 norm:

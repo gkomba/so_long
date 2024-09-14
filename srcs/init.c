@@ -66,8 +66,8 @@ void	ft_init_game(char *map_address)
 	t_win	mlx;
 
 	mlx.map = ft_get_map(map_address);
-	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE);
-	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE);
+	map.wdth = (ft_strlen(mlx.map[0]) * OBJECT_SIZE) + 90;
+	map.hgth = (ft_matriz_len(mlx.map) * OBJECT_SIZE) + 90;
 	mlx.steps = 0;
 	ft_mlx_init_game(&mlx, &map);
 	mlx_hook(mlx.new_win, 2, 1L << 0, ft_handle_key, &mlx);
