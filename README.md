@@ -26,7 +26,9 @@ make
 so_long maps/maps2.ber
 ```
 
-5 Contact
+5 - Contact
+```bash
 Github : https://github.com/gkomba
 
 E-mail : kombagildo@gmail.com
+```
