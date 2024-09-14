@@ -21,7 +21,12 @@ After downloading, extract it with the name minilibx-linux and put it in the gam
 make
 ```
 
-4 - Run the game
+4 - Run the game and enjoy it
 ```bash
 so_long maps/maps2.ber
 ```
+
+5 Contact
+Github : https://github.com/gkomba
+
+E-mail : kombagildo@gmail.com
