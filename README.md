@@ -6,5 +6,5 @@ and some other very basic gameplay elements.
 # How to Play
 
 ```bash
-git clone https://github.com/gkomba/so_long.git && cd so_long && make && so_long maps/maps2.ber
+git clone https://github.com/gkomba/so_long.git && cd so_long && cd minilibx-linux && chmod 777 * && cd .. && make && so_long maps/maps2.ber
 ```
