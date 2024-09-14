@@ -1,4 +1,4 @@
-# My First Game since i started learning Programming
+# 🎮My First Game since i started learning Programming🎮
 This project is a very small 2D game.
 Its purpose is to make you work with textures, sprites,
 and some other very basic gameplay elements.
@@ -14,6 +14,7 @@ git clone https://github.com/gkomba/so_long.git
 You must have the minilibx, if you don´t have it you can download
 Donwload the libare on this link address
 https://cdn.intra.42.fr/document/document/26192/minilibx-linux.tgz
+
 After downloading, extract it with the name minilibx-linux and put it in the game repository
 
 3 - complile the game
@@ -21,7 +22,7 @@ After downloading, extract it with the name minilibx-linux and put it in the gam
 make
 ```
 
-4 - Run the game and enjoy it
+4 - Run the game and enjoy it🏆
 ```bash
 so_long maps/maps2.ber
 ```
